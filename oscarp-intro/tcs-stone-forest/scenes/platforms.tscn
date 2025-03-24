@@ -1,0 +1,45 @@
+[gd_scene load_steps=6 format=3 uid="uid://d2x0ji7tlbee8"]
+
+[ext_resource type="Texture2D" uid="uid://bkvtv8da6gm6w" path="res://sprites/SF Pllatforms.png" id="1_qey43"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_0j5xx"]
+atlas = ExtResource("1_qey43")
+region = Rect2(0, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ho0xh"]
+atlas = ExtResource("1_qey43")
+region = Rect2(16, 0, 16, 16)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_yo678"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_0j5xx")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ho0xh")
+}],
+"loop": true,
+"name": &"default",
+"speed": 2.0
+}]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_y8qjr"]
+size = Vector2(16, 9)
+
+[node name="platforms" type="Node2D"]
+
+[node name="AnimatableBody2D" type="AnimatableBody2D" parent="."]
+disable_mode = 2
+sync_to_physics = false
+
+[node name="Sprite2D" type="AnimatedSprite2D" parent="AnimatableBody2D"]
+texture_filter = 1
+sprite_frames = SubResource("SpriteFrames_yo678")
+autoplay = "default"
+frame = 1
+frame_progress = 0.678644
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="AnimatableBody2D"]
+position = Vector2(0, 3.5)
+shape = SubResource("RectangleShape2D_y8qjr")

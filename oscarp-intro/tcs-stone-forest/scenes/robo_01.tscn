@@ -1,0 +1,73 @@
+[gd_scene load_steps=10 format=3 uid="uid://cukm70xhb307s"]
+
+[ext_resource type="Script" path="res://scenes/robo_01.gd" id="1_2dh8k"]
+[ext_resource type="Texture2D" uid="uid://bbhy8ns0cpvgu" path="res://sprites/SF Robo01.png" id="1_iompu"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_6uplm"]
+size = Vector2(20, 15)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_yo7xs"]
+atlas = ExtResource("1_iompu")
+region = Rect2(0, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_n0su4"]
+atlas = ExtResource("1_iompu")
+region = Rect2(32, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_d3fbm"]
+atlas = ExtResource("1_iompu")
+region = Rect2(64, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_1x7jm"]
+atlas = ExtResource("1_iompu")
+region = Rect2(96, 0, 32, 32)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_ihhit"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_yo7xs")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_n0su4")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_d3fbm")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_1x7jm")
+}],
+"loop": true,
+"name": &"move",
+"speed": 6.0
+}]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_vcajv"]
+size = Vector2(22, 22)
+
+[node name="Robo01" type="CharacterBody2D"]
+script = ExtResource("1_2dh8k")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(0, 2.5)
+shape = SubResource("RectangleShape2D_6uplm")
+disabled = true
+
+[node name="robo1Sprite" type="AnimatedSprite2D" parent="."]
+texture_filter = 1
+sprite_frames = SubResource("SpriteFrames_ihhit")
+animation = &"move"
+autoplay = "move"
+frame_progress = 0.66099
+
+[node name="left d" type="RayCast2D" parent="robo1Sprite"]
+position = Vector2(-18, 8)
+target_position = Vector2(0, 18)
+collision_mask = 2
+
+[node name="Area2D" type="Area2D" parent="." groups=["enemy"]]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
+position = Vector2(0, 5)
+shape = SubResource("RectangleShape2D_vcajv")
+debug_color = Color(0.547121, 0.528705, 0.550183, 0.42)
