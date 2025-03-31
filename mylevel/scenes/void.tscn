@@ -1,0 +1,17 @@
+[gd_scene load_steps=3 format=3 uid="uid://n2wp6svrfapt"]
+
+[ext_resource type="Texture2D" uid="uid://vvoq0wyj3vta" path="res://assets/floor/blackvoidV2.png" id="1_qxiqc"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_n0dys"]
+size = Vector2(16, 14)
+
+[node name="void" type="Node2D"]
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture = ExtResource("1_qxiqc")
+
+[node name="Area2D" type="Area2D" parent="." groups=["enemy"]]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
+position = Vector2(0, 1)
+shape = SubResource("RectangleShape2D_n0dys")
