@@ -1,0 +1,87 @@
+[gd_scene load_steps=12 format=3 uid="uid://boy2e10v6lm16"]
+
+[ext_resource type="Script" path="res://sceneS/Printer.gd" id="1_y6ced"]
+[ext_resource type="Texture2D" uid="uid://c4ej17a2d0p3g" path="res://ASSETS/printer.png" id="2_e7lnw"]
+[ext_resource type="Texture2D" uid="uid://c3nqs2t6luhtf" path="res://ASSETS/printer2.png" id="3_1vlai"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_83ygk"]
+size = Vector2(26, 26)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_irhrr"]
+atlas = ExtResource("2_e7lnw")
+region = Rect2(0, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_fgkh5"]
+atlas = ExtResource("2_e7lnw")
+region = Rect2(64, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_wyvrw"]
+atlas = ExtResource("3_1vlai")
+region = Rect2(0, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_xrcg1"]
+atlas = ExtResource("3_1vlai")
+region = Rect2(64, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_xu4c7"]
+atlas = ExtResource("3_1vlai")
+region = Rect2(128, 0, 64, 64)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_wnwgw"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_irhrr")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_fgkh5")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_wyvrw")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_xrcg1")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_xu4c7")
+}],
+"loop": true,
+"name": &"print",
+"speed": 5.0
+}]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_gj3gk"]
+size = Vector2(27.5, 28)
+
+[node name="CharacterBody2D" type="CharacterBody2D"]
+script = ExtResource("1_y6ced")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(0, -1)
+shape = SubResource("RectangleShape2D_83ygk")
+
+[node name="printer" type="AnimatedSprite2D" parent="."]
+scale = Vector2(0.5625, 0.53125)
+sprite_frames = SubResource("SpriteFrames_wnwgw")
+animation = &"print"
+autoplay = "print"
+frame_progress = 0.946105
+
+[node name="Down" type="RayCast2D" parent="printer"]
+position = Vector2(-32, -3.76471)
+target_position = Vector2(0, 77.1765)
+
+[node name="Horizontal" type="RayCast2D" parent="printer"]
+position = Vector2(0, -3.76471)
+target_position = Vector2(-69.3333, 0)
+
+[node name="Area2D" type="Area2D" parent="." groups=["enemy"]]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
+position = Vector2(0.25, -1)
+shape = SubResource("RectangleShape2D_gj3gk")

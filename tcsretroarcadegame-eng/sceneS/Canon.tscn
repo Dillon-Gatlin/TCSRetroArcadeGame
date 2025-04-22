@@ -1,0 +1,18 @@
+[gd_scene load_steps=3 format=3 uid="uid://dplrvo15jdk2u"]
+
+[ext_resource type="Script" path="res://sceneS/canon.gd" id="1_1h4m7"]
+[ext_resource type="Texture2D" uid="uid://b32qoafygqunw" path="res://ASSETS/ac.png" id="1_vn05t"]
+
+[node name="AC" type="Node2D"]
+script = ExtResource("1_1h4m7")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+position = Vector2(7, -7)
+scale = Vector2(0.71875, 0.84375)
+texture = ExtResource("1_vn05t")
+
+[node name="ShootTime" type="Timer" parent="."]
+wait_time = 1.5
+autostart = true
+
+[connection signal="timeout" from="ShootTime" to="." method="_on_shoot_time_timeout"]
