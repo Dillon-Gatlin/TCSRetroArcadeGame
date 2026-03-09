@@ -1,0 +1,84 @@
+[gd_scene load_steps=11 format=3 uid="uid://dvwe0frq28qf1"]
+
+[ext_resource type="Script" path="res://poo.gd" id="1_32vki"]
+[ext_resource type="Texture2D" uid="uid://bc7rvniwoy8e0" path="res://assets/enemies/PPoo_run.png" id="1_dsvto"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_cq0lr"]
+atlas = ExtResource("1_dsvto")
+region = Rect2(0, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_6qhxt"]
+atlas = ExtResource("1_dsvto")
+region = Rect2(32, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_fr5p3"]
+atlas = ExtResource("1_dsvto")
+region = Rect2(64, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_omxq4"]
+atlas = ExtResource("1_dsvto")
+region = Rect2(96, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_s4haf"]
+atlas = ExtResource("1_dsvto")
+region = Rect2(128, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_x2o43"]
+atlas = ExtResource("1_dsvto")
+region = Rect2(160, 0, 32, 32)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_26sa2"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_cq0lr")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_6qhxt")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_fr5p3")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_omxq4")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_s4haf")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_x2o43")
+}],
+"loop": true,
+"name": &"poorun",
+"speed": 10.0
+}]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_74h5i"]
+size = Vector2(19, 24)
+
+[node name="poo" type="Node2D"]
+script = ExtResource("1_32vki")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+sprite_frames = SubResource("SpriteFrames_26sa2")
+animation = &"poorun"
+autoplay = "poorun"
+frame_progress = 0.565343
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="AnimatedSprite2D"]
+
+[node name="RayCastLeft" type="RayCast2D" parent="."]
+position = Vector2(0, 2)
+target_position = Vector2(-13, 0)
+collision_mask = 2
+
+[node name="RayCastRight" type="RayCast2D" parent="."]
+position = Vector2(0, 2)
+target_position = Vector2(15, 0)
+collision_mask = 2
+
+[node name="Area2D" type="Area2D" parent="." groups=["enemy"]]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
+position = Vector2(-0.5, 3)
+shape = SubResource("RectangleShape2D_74h5i")

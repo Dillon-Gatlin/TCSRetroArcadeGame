@@ -1,0 +1,32 @@
+[gd_scene load_steps=5 format=3 uid="uid://btenedgtqxajm"]
+
+[ext_resource type="Texture2D" uid="uid://ca5l5r81k3d66" path="res://assets/decor/Kaelyn Snail V4.png" id="1_dvwqn"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_0ebn0"]
+atlas = ExtResource("1_dvwqn")
+region = Rect2(0, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_y6n7m"]
+atlas = ExtResource("1_dvwqn")
+region = Rect2(0, 16, 16, 16)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_bik8x"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_0ebn0")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_y6n7m")
+}],
+"loop": true,
+"name": &"default",
+"speed": 2.0
+}]
+
+[node name="snail guy down" type="Node2D"]
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+sprite_frames = SubResource("SpriteFrames_bik8x")
+autoplay = "default"
+frame_progress = 0.168759

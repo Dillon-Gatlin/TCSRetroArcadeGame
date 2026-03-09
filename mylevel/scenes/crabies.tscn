@@ -1,0 +1,67 @@
+[gd_scene load_steps=9 format=3 uid="uid://c8mda4beg3dra"]
+
+[ext_resource type="Script" path="res://scripts/crabies.gd" id="1_okemi"]
+[ext_resource type="Texture2D" uid="uid://belimjasi42f3" path="res://assets/enemies/crab move.png" id="2_73cnx"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_41fep"]
+atlas = ExtResource("2_73cnx")
+region = Rect2(0, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_q67dj"]
+atlas = ExtResource("2_73cnx")
+region = Rect2(0, 16, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_s6k57"]
+atlas = ExtResource("2_73cnx")
+region = Rect2(0, 32, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_1sbf6"]
+atlas = ExtResource("2_73cnx")
+region = Rect2(0, 48, 16, 16)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_7cq6m"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_41fep")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_q67dj")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_s6k57")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_1sbf6")
+}],
+"loop": true,
+"name": &"default",
+"speed": 10.0
+}]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_1kwhu"]
+size = Vector2(16, 8)
+
+[node name="crabies" type="Node2D"]
+script = ExtResource("1_okemi")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+sprite_frames = SubResource("SpriteFrames_7cq6m")
+autoplay = "default"
+frame_progress = 0.545937
+
+[node name="RayCastRight" type="RayCast2D" parent="."]
+position = Vector2(0, 4)
+target_position = Vector2(9, 0)
+collision_mask = 2
+
+[node name="RayCastLeft" type="RayCast2D" parent="."]
+position = Vector2(0, 4)
+target_position = Vector2(-9, 0)
+collision_mask = 2
+
+[node name="Area2D" type="Area2D" parent="." groups=["enemy"]]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
+position = Vector2(0, 4)
+shape = SubResource("RectangleShape2D_1kwhu")

@@ -1,0 +1,39 @@
+[gd_scene load_steps=6 format=3 uid="uid://db5s36sf2do2g"]
+
+[ext_resource type="Texture2D" uid="uid://cocofidwciw12" path="res://assets/floor/bubble guy.png" id="1_ovy1x"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_q38rh"]
+atlas = ExtResource("1_ovy1x")
+region = Rect2(0, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_l0ujw"]
+atlas = ExtResource("1_ovy1x")
+region = Rect2(0, 16, 16, 16)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_8ka4t"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_q38rh")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_l0ujw")
+}],
+"loop": true,
+"name": &"default",
+"speed": 3.0
+}]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_yamll"]
+size = Vector2(16, 15)
+
+[node name="bubble" type="StaticBody2D"]
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+sprite_frames = SubResource("SpriteFrames_8ka4t")
+autoplay = "default"
+frame_progress = 0.2326
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(0, 0.5)
+shape = SubResource("RectangleShape2D_yamll")

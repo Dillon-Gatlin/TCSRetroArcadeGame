@@ -1,0 +1,95 @@
+[gd_scene load_steps=14 format=3 uid="uid://xxgcek8gaypn"]
+
+[ext_resource type="Texture2D" uid="uid://bq84rt3ltrpmi" path="res://assets/decor/isopod.png" id="1_fc7vq"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_642yv"]
+atlas = ExtResource("1_fc7vq")
+region = Rect2(0, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_2x6er"]
+atlas = ExtResource("1_fc7vq")
+region = Rect2(16, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_imhig"]
+atlas = ExtResource("1_fc7vq")
+region = Rect2(32, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_2cy5n"]
+atlas = ExtResource("1_fc7vq")
+region = Rect2(48, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_syuxx"]
+atlas = ExtResource("1_fc7vq")
+region = Rect2(64, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_bmari"]
+atlas = ExtResource("1_fc7vq")
+region = Rect2(80, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_c63ew"]
+atlas = ExtResource("1_fc7vq")
+region = Rect2(96, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_vb7qa"]
+atlas = ExtResource("1_fc7vq")
+region = Rect2(112, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_v717p"]
+atlas = ExtResource("1_fc7vq")
+region = Rect2(128, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_5xtxo"]
+atlas = ExtResource("1_fc7vq")
+region = Rect2(144, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_dwr6b"]
+atlas = ExtResource("1_fc7vq")
+region = Rect2(160, 0, 16, 16)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_vumi6"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_642yv")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_2x6er")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_imhig")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_2cy5n")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_syuxx")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_bmari")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_c63ew")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_vb7qa")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_v717p")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_5xtxo")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_dwr6b")
+}],
+"loop": true,
+"name": &"default",
+"speed": 2.5
+}]
+
+[node name="isopod" type="Node2D"]
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+sprite_frames = SubResource("SpriteFrames_vumi6")
+autoplay = "default"
+frame_progress = 0.0634422
